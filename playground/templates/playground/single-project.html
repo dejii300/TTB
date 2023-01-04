@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block content %}
+
+  <section id="main-container" class="main-container">
+    <div class="container">
+  
+      <div class="row">
+        <div class="col-lg-8">
+          <div id="page-slider" class="page-slider small-bg">
+            <div class="item">
+                <img style="max-height: 500px; max-width: 800px;" src="{{project.imageURL}}" />
+                <h2>{{project.title}}</h2>
+            </div>
+          </div><!-- Page slider end -->
+        </div><!-- Slider col end -->
+  
+        <div class="col-lg-4 mt-5 mt-lg-0">
+            <h2>{{project.title}}</h2>
+            <div class="btn btn-primary">
+                {% for tag in project.tags.all %}
+                <span class="tag tag--pill tag--main">
+                  <small>{{tag.name}}</small>
+                </span>
+                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
+                {% endfor %}
+            </div>
+            {% if project.source_code %}
+            <p>
+                <div class="btn btn-dark">
+                    <a class="singleProject__liveLink" href="#" target="_blank"><i class="im im-external-link"></i>Source Code</a>
+                </div>
+            </p>
+            {% endif %}
+        
+
+        <hr>
+        <h3 class="singleProject__subtitle">About the Project</h3>
+
+
+        <p>{{project.description|linebreaksbr}}</p>
+
+        <hr>
+
+        <h3>Reviews:</h3>
+        {% for review in project.review_set.all %}
+        <p>{{review.body}}</p>
+
+        {% endfor %}
+
+  
+          
+        </div><!-- Content col end -->
+  
+      </div><!-- Row end -->
+  
+    </div><!-- Conatiner end -->
+  </section><!-- Main container end -->
+  
+{% endblock %}

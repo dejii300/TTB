@@ -1,0 +1,6 @@
+<form action="" method="POST">
+    {% csrf_token %}
+   <p> you  sure you want to delete"{{object}}"?</p>
+   <a href="{% url 'Project' %}">GO Back</a>
+   <input type="submit" value="delete"/>
+</form>
